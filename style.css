@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(30, 30, 30);
+}
+#canvas{
+    padding: 0;
+    margin: auto;
+    display: block;
+    border:rgb(230, 130, 16) 3px solid;
+    background-color:black;
+    /*
+    width: 512px;
+    height: 512px;
+    image-rendering: -moz-crisp-edges;    
+    image-rendering: -webkit-crisp-edges; 
+    image-rendering: pixelated;
+    */
+}
