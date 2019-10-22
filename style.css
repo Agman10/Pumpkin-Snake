@@ -7,11 +7,21 @@ body{
     display: block;
     border:rgb(230, 130, 16) 3px solid;
     background-color:black;
-    /*
-    width: 512px;
-    height: 512px;
+    
+    /* for 160x160 resolution (10 grids) */
+    /* width: 320px;
+    height: 320px; */
+
+    /* for 240x240 resolution (15 grids) */
+    width: 480px;
+    height: 480px;
+
+    /* for 320x320 resolution (20 grids) */
+    /* width: 640px;
+    height: 640px; */
+
     image-rendering: -moz-crisp-edges;    
     image-rendering: -webkit-crisp-edges; 
     image-rendering: pixelated;
-    */
+    
 }

@@ -1,47 +1,62 @@
-let canvas = document.createElement('canvas');
-let ctx = canvas.getContext('2d');
+/* var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d'); */
 canvas.setAttribute("id", "canvas");
-canvas.width  = 160;
-canvas.height = 160;
+
+//10 grids
+//canvas.width  = 160;
+//canvas.height = 160;
+
+//15 grids
+canvas.width  = 240;
+canvas.height = 240;
+
+//20 grids
+//canvas.width  = 320;
+//canvas.height = 320;
+
 const SCALE = 16;
 
-console.log("width: " + canvas.width + " height: " + canvas.height)
+console.log("width: " + canvas.width / SCALE + " height: " + canvas.height / SCALE)
 
-// make it so every 16 pixels are one grid
-/* let gwidth =  canvas.width /  16;
-let gheight =  canvas.height /  16;
-console.log("screen width: " + gwidth)
-console.log("screen height: " + gheight) */
 
-// give X and Y a grid position starting with 1
-/* let screenX = canvas.width / gwidth
-let screenY = canvas.height / gheight
-let testX = 16;
-console.log(testX) */
 
-let posX = 0
-let posY = 0
+/**
+ * load the Game class
+ */
+var game = new Game();
+/**
+ * detects key presses
+ */
+var keysDown = [];
 
-console.log("screenX size: " + screenX)
-console.log("screenY size: " + screenY)
-if(screenX > 10){
-    console.log("too much")
+var candy = new Array()
+
+document.addEventListener("keydown", event => {
+    //console.log(event.keyCode)
+    console.log("event code " + event.code)
+    //when space is pressed it doesn't repeat. iit gets the name of the key
+    if(!keysDown[event.keyCode]){
+        document.dispatchEvent(new Event(event.code))
+    }
+
+    keysDown[event.keyCode] = true;
+})
+
+/* document.addEventListener("keyup", event => {
+    keysDown[event.keyCode] = false;
+}) */
+
+/**
+ * loads the and loops, makes the game run
+ */
+window.onload = () => {
+    console.log("game")
+    game.start();
 }
 
 
-/* let o = {x:posX,y:posY} */
-function drawGrid(posX, posY){
-    
-    /* ctx.beginPath()
-    ctx.moveTo(posX,posY)
-    ctx.lineTo(posX+gwidth, posY);
-    ctx.lineTo(posX+gwidth, posY+gheight);
-    ctx.lineTo(posX, posY+gheight);
-    ctx.lineTo(posX, posY); */
-}
 
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(posX*SCALE,0,16,16);
+
 
 let body = document.getElementsByTagName('body')[0];
 body.appendChild(canvas);

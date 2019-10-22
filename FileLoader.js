@@ -10,8 +10,8 @@ FileLoader = new class FileLoader{
     }
 
 }
-
-const sprites = {
+//list of sprites
+var sprites = {
     player: FileLoader.importSprite('sprites/pumpkinFace.png'),
     tail: FileLoader.importSprite('sprites/pumpkin.png'),
     candy: FileLoader.importSprite('sprites/candy.png')
