@@ -15,7 +15,7 @@ class Game{
                 break;
         }
     }); */
-        setInterval(() => this.loop(), 1000 / 60);
+        setInterval(() => this.loop(), 10000 / 60);
     }
 
     stop(){
@@ -28,7 +28,7 @@ class Game{
     }
 
     logic(){
-        
+ 
         //up key pressed when you aren't moving down
         if (player.direction != "down" && player.direction != "up" && keysDown[38]) {
             //player.move(0, -1);
@@ -37,19 +37,6 @@ class Game{
             console.log(player.direction);
             //player.step();
 
-
-            //tail position and direction
-            tail.direction = "up";
-            tail.x = player.x;
-            tail.y = player.y + tail.sprite.height;
-
-
-
-            //tail2 position and direction
-            tail2.direction = "up";
-            tail2.x = tail.x;
-            tail2.y = tail.y + tail.sprite.height;
-            //console.log(pumpkinHeight)
         }
 
         //down key pressed
@@ -61,17 +48,6 @@ class Game{
             //player.step();
 
 
-            //tail position and direction
-            tail.direction = "down";
-            tail.x = player.x;
-            tail.y = player.y - tail.sprite.height;
-
-
-
-            //tail2 position and direction
-            tail2.direction = "down";
-            tail2.x = tail.x;
-            tail2.y = tail.y - tail.sprite.height;
         }
         //left key pressed
         if (player.direction != "right" && player.direction != "left" && keysDown[37]) {
@@ -81,18 +57,6 @@ class Game{
             console.log(player.direction);
             //player.step();
 
-
-            //tail position and direction
-            tail.direction = "left";
-            tail.x = player.x + tail.sprite.width;
-            tail.y = player.y;
-
-
-
-            //tail2 position and direction
-            tail2.direction = "left";
-            tail2.x = tail.x + tail.sprite.width;
-            tail2.y = tail.y;
         }
         //right key pressed
         if (player.direction != "left" && player.direction != "right" && keysDown[39]){
@@ -100,12 +64,17 @@ class Game{
             //console.log("right");
             player.direction = "right";
             console.log(player.direction)
+
+            /* setTimeout(function(){
+                console.log("timeout")
+                keysDown = [];
+            }, 2000); */
             //player.step();
             //ctx.fillRect(posX+2*SCALE, posY*SCALE ,16,16);
             //console.log(player.x)
 
             
-            //tail position and direction
+            /* //tail position and direction
             tail.direction = "right";
             tail.x = player.x - tail.sprite.width;
             tail.y = player.y;
@@ -115,12 +84,29 @@ class Game{
             //tail2 position and direction
             tail2.direction = "right";
             tail2.x = tail.x - tail.sprite.width;
-            tail2.y = tail.y;
+            tail2.y = tail.y; */
 
         }
+        /* setTimeout(function(){
+            console.log("timeout")
+        }, 2000); */
         keysDown = [];
 
-        //when player is off screen
+
+
+        if (player.x / gridX > 14){
+            player.x = 0;
+            console.log(player.x/gridX)
+        } else if(player.x <= - player.sprite.width){
+            player.x = canvas.width - player.sprite.width;
+        }
+        
+        if (player.y > 16 * player.sprite.height){
+            player.y = 0;
+        } else if(player.y <= - player.sprite.height){
+            player.y = canvas.height - player.sprite.height;
+        }
+        /* //when player is off screen
         if (player.x >= canvas.width - player.sprite.width){
             player.x = 0;
         } else if(player.x / player.sprite.width <= 0){
@@ -131,7 +117,7 @@ class Game{
             player.y = 0;
         } else if(player.y / player.sprite.height <= 0){
             player.y = canvas.height - player.sprite.height;
-        }
+        } */
 
 
         /* //when tail is off screen
@@ -170,16 +156,19 @@ class Game{
         //Renderer.ctx.drawImage('sprites/pumpkinFace.png', 16, 16);
         /* tail.draw();
         tail.step();
-
         tail2.draw();
         tail2.step(); */
+        player.addTail()
         for(var tail of player.tail){
             tail.draw();
         }
+        
         player.draw();
         player.step();
         candy.draw();
         //console.log("x: " + tail.x + " y: " + tail.y)
         //console.log("X: " + player.x + " Y: " + player.y)
+        
+        console.log("X: " + player.x/gridX + " Y: " + player.y/gridY)
     }
 }

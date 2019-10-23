@@ -13,8 +13,15 @@ body{
     height: 320px; */
 
     /* for 240x240 resolution (15 grids) */
+    /* width: 480px;
+    height: 480px; */
+
+    /* width: 420px;
+    height: 408px; */
+    /* width: 450px;
+    height: 442px; */
     width: 480px;
-    height: 480px;
+    height: 476px;
 
     /* for 320x320 resolution (20 grids) */
     /* width: 640px;

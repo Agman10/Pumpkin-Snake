@@ -7,9 +7,15 @@ canvas.setAttribute("id", "canvas");
 //canvas.height = 160;
 
 //15 grids
-canvas.width  = 240;
-canvas.height = 240;
+canvas.width = player.sprite.width * 15;
+console.log(canvas.width);
+canvas.height = player.sprite.height * 17;
+console.log(canvas.height);
+/* canvas.width  = 240;
+canvas.height = 240; */
 
+console.log(canvas.width /15);
+console.log(canvas.height / 17);
 //20 grids
 //canvas.width  = 320;
 //canvas.height = 320;
@@ -17,11 +23,13 @@ canvas.height = 240;
 const SCALE = 16;
 const pumpkinWidth = 16;
 const pumpkinHeight = 14;
+const gridX = canvas.width /15
+const gridY = canvas.height / 17
 
 console.log("width: " + canvas.width / SCALE + " height: " + canvas.height / SCALE)
 console.log("spritedfscgsdfg " + player.sprite.width)
 console.log("spritedfscgsdfg " + player.sprite.height)
-
+console.log(-player.sprite.width)
 /**
  * load the Game class
  */

@@ -14,21 +14,21 @@ class Player{
     addTail(){
         var tail = new Tail(this.x, this.y)
         //up
-        if(this.direction == "up") tail.y = this.y + this.sprite.height;
+        if(this.direction == "up") tail.y = this.y /* + this.sprite.height; */
         //right
-        if(this.direction == "right") tail.x = this.x - this.sprite.width; 
+        if(this.direction == "right") tail.x = this.x /* - this.sprite.width;  */
         //down
-        if(this.direction == "down") tail.y = this.y - this.sprite.height;
+        if(this.direction == "down") tail.y = this.y /* - this.sprite.height; */
         //left
-        if(this.direction == "left") tail.x = this.x + this.sprite.width; 
+        if(this.direction == "left") tail.x = this.x /* + this.sprite.width;  */
         this.tail.push(tail)
         
         
     }
 
     move(x, y){
-        this.x += x;
-        this.y += y;
+        this.x += x * this.sprite.width;
+        this.y += y * this.sprite.width;
         //this.posY += 2;
     }
 
@@ -49,4 +49,4 @@ class Player{
     }
 }
 
-player = new Player(64, 32);
+player = new Player(32, 28);
