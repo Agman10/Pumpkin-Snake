@@ -1,39 +1,52 @@
 class Player{
         constructor(x, y){
-        this.posX = x;
-        this.posY = y;
+        this.x = x;
+        this.y = y;
         this.tail = new Array();
         this.sprite = sprites.player;
-        this.direction = 1;
+        this.direction = "right";
     }
 
     update(){
-        /* for (this.direction = 1){
+        
+    }
 
-        } */
+    addTail(){
+        var tail = new Tail(this.x, this.y)
+        //up
+        if(this.direction == "up") tail.y = this.y + this.sprite.height;
+        //right
+        if(this.direction == "right") tail.x = this.x - this.sprite.width; 
+        //down
+        if(this.direction == "down") tail.y = this.y - this.sprite.height;
+        //left
+        if(this.direction == "left") tail.x = this.x + this.sprite.width; 
+        this.tail.push(tail)
+        
+        
     }
 
     move(x, y){
-        this.posX += x;
-        this.posY += y;
+        this.x += x;
+        this.y += y;
         //this.posY += 2;
     }
 
     step(){
         //up
-        if(this.direction == 0) this.move(0, -1)
+        if(this.direction == "up") this.move(0, -1)
         //right
-        if(this.direction == 1) this.move(1, 0)
+        if(this.direction == "right") this.move(1, 0)
         //down
-        if(this.direction == 2) this.move(0, 1)
+        if(this.direction == "down") this.move(0, 1)
         //left
-        if(this.direction == 3) this.move(-1, 0)
+        if(this.direction == "left") this.move(-1, 0)
     }
 
     draw(){
-        Renderer.img(this.sprite, this.posX, this.posY);
+        Renderer.img(this.sprite, this.x, this.y);
         
     }
 }
 
-player = new Player(32, 32);
+player = new Player(64, 32);

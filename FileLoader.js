@@ -14,5 +14,6 @@ FileLoader = new class FileLoader{
 var sprites = {
     player: FileLoader.importSprite('sprites/pumpkinFace.png'),
     tail: FileLoader.importSprite('sprites/pumpkin.png'),
+    //tail2: FileLoader.importSprite('sprites/pumpkin.png'),
     candy: FileLoader.importSprite('sprites/candy.png')
 }

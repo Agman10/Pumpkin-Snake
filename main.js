@@ -15,10 +15,12 @@ canvas.height = 240;
 //canvas.height = 320;
 
 const SCALE = 16;
+const pumpkinWidth = 16;
+const pumpkinHeight = 14;
 
 console.log("width: " + canvas.width / SCALE + " height: " + canvas.height / SCALE)
-
-
+console.log("spritedfscgsdfg " + player.sprite.width)
+console.log("spritedfscgsdfg " + player.sprite.height)
 
 /**
  * load the Game class
@@ -29,7 +31,7 @@ var game = new Game();
  */
 var keysDown = [];
 
-var candy = new Array()
+//var candy = new Array()
 
 document.addEventListener("keydown", event => {
     //console.log(event.keyCode)

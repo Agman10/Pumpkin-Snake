@@ -28,54 +28,139 @@ class Game{
     }
 
     logic(){
+        
         //up key pressed when you aren't moving down
-        if (player.direction != 2 && keysDown[38]) {
+        if (player.direction != "down" && player.direction != "up" && keysDown[38]) {
             //player.move(0, -1);
-            console.log("up");
-            player.direction = 0;
-            console.log(player.direction)
+            //console.log("up");
+            player.direction = "up";
+            console.log(player.direction);
             //player.step();
+
+
+            //tail position and direction
+            tail.direction = "up";
+            tail.x = player.x;
+            tail.y = player.y + tail.sprite.height;
+
+
+
+            //tail2 position and direction
+            tail2.direction = "up";
+            tail2.x = tail.x;
+            tail2.y = tail.y + tail.sprite.height;
+            //console.log(pumpkinHeight)
         }
+
         //down key pressed
-        if (player.direction != 0 && keysDown[40]) {
+        if (player.direction != "up" && player.direction != "down" && keysDown[40]) {
             //player.move(0, 1);
-            console.log("down");
-            player.direction = 2;
-            console.log(player.direction)
+            //console.log("down");
+            player.direction = "down";
+            console.log(player.direction);
             //player.step();
+
+
+            //tail position and direction
+            tail.direction = "down";
+            tail.x = player.x;
+            tail.y = player.y - tail.sprite.height;
+
+
+
+            //tail2 position and direction
+            tail2.direction = "down";
+            tail2.x = tail.x;
+            tail2.y = tail.y - tail.sprite.height;
         }
         //left key pressed
-        if (player.direction != 1 && keysDown[37]) {
+        if (player.direction != "right" && player.direction != "left" && keysDown[37]) {
             //player.move(-1, 0);
-            console.log("left");
-            player.direction = 3;
-            console.log(player.direction)
-            
+            //console.log("left");
+            player.direction = "left";
+            console.log(player.direction);
             //player.step();
+
+
+            //tail position and direction
+            tail.direction = "left";
+            tail.x = player.x + tail.sprite.width;
+            tail.y = player.y;
+
+
+
+            //tail2 position and direction
+            tail2.direction = "left";
+            tail2.x = tail.x + tail.sprite.width;
+            tail2.y = tail.y;
         }
         //right key pressed
-        if (player.direction != 3 && keysDown[39]){
+        if (player.direction != "left" && player.direction != "right" && keysDown[39]){
             //player.move(1, 0);
-            console.log("right");
-            player.direction = 1;
+            //console.log("right");
+            player.direction = "right";
             console.log(player.direction)
             //player.step();
             //ctx.fillRect(posX+2*SCALE, posY*SCALE ,16,16);
             //console.log(player.x)
+
+            
+            //tail position and direction
+            tail.direction = "right";
+            tail.x = player.x - tail.sprite.width;
+            tail.y = player.y;
+
+
+
+            //tail2 position and direction
+            tail2.direction = "right";
+            tail2.x = tail.x - tail.sprite.width;
+            tail2.y = tail.y;
+
         }
         keysDown = [];
 
-        if (player.posX > canvas.width - SCALE){
-            player.posX = 0;
-        } else if(player.posX / SCALE < 0){
-            player.posX = 240;
+        //when player is off screen
+        if (player.x >= canvas.width - player.sprite.width){
+            player.x = 0;
+        } else if(player.x / player.sprite.width <= 0){
+            player.x = canvas.width - player.sprite.width;
         }
         
-        if (player.posY > canvas.height - SCALE){
-            player.posY = 0;
-        } else if(player.posY / SCALE < 0){
-            player.posY = 240;
+        if (player.y >= canvas.height - player.sprite.height){
+            player.y = 0;
+        } else if(player.y / player.sprite.height <= 0){
+            player.y = canvas.height - player.sprite.height;
         }
+
+
+        /* //when tail is off screen
+        if (tail.x >= canvas.width - tail.sprite.width){
+            tail.x = 0;
+        } else if(tail.x / tail.sprite.width <= 0){
+            tail.x = canvas.width - tail.sprite.width;
+        }
+        
+        if (tail.y >= canvas.height - tail.sprite.height){
+            tail.y = 0;
+        } else if(tail.y / tail.sprite.height <= 0){
+            tail.y = canvas.height - tail.sprite.height;
+        }
+
+
+
+        //when tail2 is off screen
+        if (tail2.x >= canvas.width - tail.sprite.width){
+            tail2.x = 0;
+        } else if(tail2.x / tail.sprite.width <= 0){
+            tail2.x = canvas.width - tail.sprite.width;
+        }
+        
+        if (tail2.y >= canvas.height - tail.sprite.height){
+            tail2.y = 0;
+        } else if(tail2.y / tail.sprite.height <= 0){
+            tail2.y = canvas.height - tail.sprite.height;
+        } */
     }
 
     render(){
@@ -83,9 +168,18 @@ class Game{
         //ctx.fillRect(posX+2*SCALE, posY*SCALE ,16,16);
         //console.log(player)
         //Renderer.ctx.drawImage('sprites/pumpkinFace.png', 16, 16);
+        /* tail.draw();
+        tail.step();
+
+        tail2.draw();
+        tail2.step(); */
+        for(var tail of player.tail){
+            tail.draw();
+        }
         player.draw();
         player.step();
-        
-        console.log("X: " + player.posX / SCALE + " Y: " + player.posY / SCALE)
+        candy.draw();
+        //console.log("x: " + tail.x + " y: " + tail.y)
+        //console.log("X: " + player.x + " Y: " + player.y)
     }
 }
