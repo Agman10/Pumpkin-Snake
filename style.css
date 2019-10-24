@@ -7,6 +7,8 @@ body{
     display: block;
     border:rgb(230, 130, 16) 3px solid;
     background-color:black;
+    /* font-family: 'Press Start 2P';
+    font-size: 10px; */
     
     /* for 160x160 resolution (10 grids) */
     /* width: 320px;
@@ -20,6 +22,7 @@ body{
     height: 408px; */
     /* width: 450px;
     height: 442px; */
+    
     width: 480px;
     height: 476px;
 

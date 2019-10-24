@@ -5,21 +5,17 @@ class Tail{
         this.sprite = sprites.tail;
         this.direction = player.direction;
     }
-    /* move(x, y){
-        this.x += x;
-        this.y += y;
-    } */
+    move(x, y){
+        this.x += x * player.sprite.width;
+        this.y += y * player.sprite.height;
+    } 
 
-    /* step(){
-        //up
-        if(this.direction == "up") this.move(0, -1)
-        //right
-        if(this.direction == "right") this.move(1, 0)
-        //down
-        if(this.direction == "down") this.move(0, 1)
-        //left
-        if(this.direction == "left") this.move(-1, 0)
-    } */
+    setPosition(x, y){
+        this.lastX = this.x;
+        this.lastY = this.y;
+        this.x = x;
+        this.y = y;
+    }
 
     draw(){
         Renderer.img(this.sprite, this.x, this.y);

@@ -20,26 +20,27 @@ console.log(canvas.height / 17);
 //canvas.width  = 320;
 //canvas.height = 320;
 
-const SCALE = 16;
+/* const SCALE = 16;
 const pumpkinWidth = 16;
-const pumpkinHeight = 14;
-const gridX = canvas.width /15
-const gridY = canvas.height / 17
+const pumpkinHeight = 14; */
 
-console.log("width: " + canvas.width / SCALE + " height: " + canvas.height / SCALE)
-console.log("spritedfscgsdfg " + player.sprite.width)
-console.log("spritedfscgsdfg " + player.sprite.height)
-console.log(-player.sprite.width)
+const gridX = player.sprite.width
+const gridY = player.sprite.height
+
+console.log(canvas.width / gridX)
+
 /**
  * load the Game class
  */
 var game = new Game();
+//var player = new Player(32, 28);
+var candy = new Candy();
 /**
  * detects key presses
  */
+
 var keysDown = [];
 
-//var candy = new Array()
 
 document.addEventListener("keydown", event => {
     //console.log(event.keyCode)

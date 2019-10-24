@@ -3,19 +3,13 @@ class Game{
         this.running = false;
     }
     start(){
-        /* document.addEventListener("ArrowLeft", () => {
-            if(this.direction = 1){
-                console.log("stop")
-            }
-        }) */
-        /* logic.keysDown(function (event) {
-        switch (event.keyCode){
-            case 38:
-                console.log("agsdfgsdfg")
-                break;
-        }
-    }); */
-        setInterval(() => this.loop(), 10000 / 60);
+        player.addTail();
+        //candy.newCandy();
+        console.log("tails: " + player.tail["length" - 1])
+        //candy.newCandy();
+        let fps = 60;
+        setInterval(() => this.loop(), 10000/fps);
+        //var candy = new Candy(candy.x, candy.y)
     }
 
     stop(){
@@ -65,110 +59,74 @@ class Game{
             player.direction = "right";
             console.log(player.direction)
 
-            /* setTimeout(function(){
-                console.log("timeout")
-                keysDown = [];
-            }, 2000); */
-            //player.step();
-            //ctx.fillRect(posX+2*SCALE, posY*SCALE ,16,16);
-            //console.log(player.x)
-
-            
-            /* //tail position and direction
-            tail.direction = "right";
-            tail.x = player.x - tail.sprite.width;
-            tail.y = player.y;
-
-
-
-            //tail2 position and direction
-            tail2.direction = "right";
-            tail2.x = tail.x - tail.sprite.width;
-            tail2.y = tail.y; */
-
         }
-        /* setTimeout(function(){
-            console.log("timeout")
-        }, 2000); */
         keysDown = [];
 
 
-
+        //when player is off screen in x
         if (player.x / gridX > 14){
             player.x = 0;
-            console.log(player.x/gridX)
-        } else if(player.x <= - player.sprite.width){
+            //console.log(player.x % gridX)
+        } else if(player.x <= - gridX){
             player.x = canvas.width - player.sprite.width;
         }
         
-        if (player.y > 16 * player.sprite.height){
+        //when player is off-screen in y
+        if (player.y / gridY > 16){
             player.y = 0;
-        } else if(player.y <= - player.sprite.height){
+        } else if(player.y <= - gridY){
             player.y = canvas.height - player.sprite.height;
         }
-        /* //when player is off screen
-        if (player.x >= canvas.width - player.sprite.width){
-            player.x = 0;
-        } else if(player.x / player.sprite.width <= 0){
-            player.x = canvas.width - player.sprite.width;
-        }
-        
-        if (player.y >= canvas.height - player.sprite.height){
-            player.y = 0;
-        } else if(player.y / player.sprite.height <= 0){
-            player.y = canvas.height - player.sprite.height;
-        } */
 
-
-        /* //when tail is off screen
-        if (tail.x >= canvas.width - tail.sprite.width){
-            tail.x = 0;
-        } else if(tail.x / tail.sprite.width <= 0){
-            tail.x = canvas.width - tail.sprite.width;
-        }
-        
-        if (tail.y >= canvas.height - tail.sprite.height){
-            tail.y = 0;
-        } else if(tail.y / tail.sprite.height <= 0){
-            tail.y = canvas.height - tail.sprite.height;
+        //when player eats a candy
+        if(player.x == candy.x && player.y == candy.y){
+            player.addTail();
+            candy.randomizePosition()
+            //console.log(player.tail)
         }
 
 
+        //when player hits the tail
 
-        //when tail2 is off screen
-        if (tail2.x >= canvas.width - tail.sprite.width){
-            tail2.x = 0;
-        } else if(tail2.x / tail.sprite.width <= 0){
-            tail2.x = canvas.width - tail.sprite.width;
-        }
-        
-        if (tail2.y >= canvas.height - tail.sprite.height){
-            tail2.y = 0;
-        } else if(tail2.y / tail.sprite.height <= 0){
-            tail2.y = canvas.height - tail.sprite.height;
+        /* if (player.x == tail.x && player.y == tail.y){
+            console.log("DIE!")
         } */
     }
 
     render(){
+        /**
+         * tail length starts with 1 even without eating candy
+         * so to make points accurate to the ammount candy eaten
+         * remove one in lengt
+        */ 
+        let points = player.tail["length"]-1
+
         Renderer.clear();
-        //ctx.fillRect(posX+2*SCALE, posY*SCALE ,16,16);
-        //console.log(player)
-        //Renderer.ctx.drawImage('sprites/pumpkinFace.png', 16, 16);
-        /* tail.draw();
-        tail.step();
-        tail2.draw();
-        tail2.step(); */
-        player.addTail()
+        
         for(var tail of player.tail){
-            tail.draw();
+            tail.draw()
+            //console.log(player.tail["length"]-1)
+            //tail.setPosition();
+            //tail.step() 
         }
         
         player.draw();
         player.step();
+        player.update();
         candy.draw();
+
+        //write the score
+        ctx.font = "10px Arial";
+        ctx.fillStyle = "white"
+        ctx.fillText("score: " + points, 4, 10);
+
+
+        //candy.newCandy()
+        //console.log(candy.newCandy())
         //console.log("x: " + tail.x + " y: " + tail.y)
         //console.log("X: " + player.x + " Y: " + player.y)
-        
-        console.log("X: " + player.x/gridX + " Y: " + player.y/gridY)
+        //console.log(tail)
+
+        //console.log("X: " + player.x/gridX + " Y: " + player.y/gridY)
     }
 }
