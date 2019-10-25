@@ -16,6 +16,7 @@ canvas.height = 240; */
 
 console.log(canvas.width /15);
 console.log(canvas.height / 17);
+console.log(Math.floor(Math.random() * 3))
 //20 grids
 //canvas.width  = 320;
 //canvas.height = 320;
@@ -23,11 +24,12 @@ console.log(canvas.height / 17);
 /* const SCALE = 16;
 const pumpkinWidth = 16;
 const pumpkinHeight = 14; */
-
+//var randomSprite = Math.floor(Math.random() * 3)
+//console.log(randomSprite)
 const gridX = player.sprite.width
 const gridY = player.sprite.height
 
-console.log(canvas.width / gridX)
+//console.log(canvas.width / gridX)
 
 /**
  * load the Game class
@@ -41,8 +43,10 @@ var candy = new Candy();
 
 var keysDown = [];
 
+//if (player.alive = true){
 
 document.addEventListener("keydown", event => {
+    if (!player.alive) return
     //console.log(event.keyCode)
     console.log("event code " + event.code)
     //when space is pressed it doesn't repeat. iit gets the name of the key
@@ -51,8 +55,11 @@ document.addEventListener("keydown", event => {
     }
 
     keysDown[event.keyCode] = true;
-})
 
+})
+/* } if (player.alive = false) {
+    console.log("can't move")
+} */
 /* document.addEventListener("keyup", event => {
     keysDown[event.keyCode] = false;
 }) */
@@ -61,7 +68,7 @@ document.addEventListener("keydown", event => {
  * loads the and loops, makes the game run
  */
 window.onload = () => {
-    console.log("game")
+    //console.log("game")
     game.start();
 }
 

@@ -4,28 +4,44 @@ class Player{
         this.y = y;
         this.tail = new Array();
         this.sprite = sprites.player;
+        //this.spriteDead = sprites.playerDead;
         this.direction = "right";
+        this.alive = true;
     }
 
     update(){
         for(let i in this.tail){
+            
             //console.log(this.tail[i])
             
             /* nextX = this.tail[i].x;
             nextY = this.tail[i].y; */
 
-            
-            if(i == 0){
-                this.tail[i].setPosition(this.x, this.y);
+            // when player doesn't have any points
+            if(i == 0 && this.direction == "up"){
+                this.tail[i].setPosition(this.x, this.y + gridY);
                 
-            }
-            
+            } else if(i == 0 && this.direction == "down"){
+                this.tail[i].setPosition(this.x, this.y - gridY);
+                
+            } else if(i == 0 && this.direction == "left"){
+                this.tail[i].setPosition(this.x + gridX, this.y);
+                
+            } else if(i == 0 && this.direction == "right"){
+                this.tail[i].setPosition(this.x - gridX, this.y);
+                
+            }  
+            /* if(i == 0){
+                this.tail[i].setPosition(this.x, this.y);
+            } */
+
+            //when player has 1 or more points
             else{
                 let lastTail = this.tail[i-1];
 
                 //console.log(this.tail[i])
                 this.tail[i].setPosition(lastTail.lastX, lastTail.lastY);
-            }
+            } 
             
             //when tail is off-screen in x
             if (this.tail[i].x / gridX > 14){
@@ -43,13 +59,19 @@ class Player{
                 this.tail[i].y = canvas.height - player.sprite.height;
             }
 
-            //while(i > 0){
-                /* if (this.tail[1].x == this.x){
-                console.log("live")
-                } else if (this.tail[1].x == this.x){
-                    console.log("die")
-                } */
-            //}
+            //if player touches the tail
+            if (this.tail[i].x == this.x && this.tail[i].y == this.y){
+                //console.log("die")
+                //this.die = true;
+                this.die();
+                
+            }
+
+            //if candy spawns in a tail
+            if (this.tail[i].x == candy.x && this.tail[i].y == candy.y){
+                candy.randomizePosition();
+                console.log("new postition")
+            }
         }
     }
 
@@ -85,10 +107,29 @@ class Player{
         if(this.direction == "down") this.move(0, 1)
         //left
         if(this.direction == "left") this.move(-1, 0)
+
+        if(this.direction == "none") this.move(0, 0)
     }
 
+    //when player dies
+    die(){
+        this.alive = false;
+        console.log("dieeeee")
+        this.direction = "none"
+        console.log(this.direction)
+        //Renderer.img(this.spriteDead, this.x, this.y);
+        player.sprite = sprites.playerDead;
+        //main.document.removeEventListener("keydown", event)
+        
+        game.stop();
+    }
     draw(){
         Renderer.img(this.sprite, this.x, this.y);
+        if(!this.alive){
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "red"
+            ctx.fillText("Game Over", gridX * 4, gridY * 7);
+        }
         
     }
 }
