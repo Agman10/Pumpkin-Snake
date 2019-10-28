@@ -16,7 +16,8 @@ class Game{
     }
 
     stop(){
-        let fps = 6;
+        
+        //let fps = 6;
         //setInterval(() => {
         //clearInterval(this.render())
         console.log("you are dead");
@@ -32,42 +33,44 @@ class Game{
     loop(){
         this.logic();
         this.render();
+        
     }
 
     logic(){
- 
-        //up key pressed when you aren't moving down
-        if (player.direction != "down" && player.direction != "up" && keysDown[38]) {
-            //player.move(0, -1);
-            //console.log("up");
+        //up key pressed when you aren't moving down and
+        if (player.direction != "down" && player.direction != "up" /* && !keypressed */ && keysDown[38]) {
             player.direction = "up";
             //console.log(player.direction);
-            //player.step();
+            //keypressed = true
+            
         }
         //down key pressed
-        if (player.direction != "up" && player.direction != "down" && keysDown[40]) {
-            //player.move(0, 1);
-            //console.log("down");
+        if (player.direction != "up" && player.direction != "down" /* && !keypressed */ && keysDown[40]) {
             player.direction = "down";
             //console.log(player.direction);
-            //player.step();
+            //keypressed = true
+            
         }
         //left key pressed
-        if (player.direction != "right" && player.direction != "left" && keysDown[37]) {
-            //player.move(-1, 0);
-            //console.log("left");
+        if (player.direction != "right" && player.direction != "left" /* && !keypressed */ && keysDown[37]) {
             player.direction = "left";
             //console.log(player.direction);
-            //player.step();
+            //keypressed = true
         }
         //right key pressed
-        if (player.direction != "left" && player.direction != "right" && keysDown[39]){
-            //player.move(1, 0);
-            //console.log("right");
+        if (player.direction != "left" && player.direction != "right" /* && !keypressed */ && keysDown[39]){
             player.direction = "right";
             //console.log(player.direction)
+
+            //keypressed = true
         }
 
+        /* if (keysDown[32]){
+            player.direction = "none";
+            keypressed = true
+        } */
+
+        //keypressed = false
         keysDown = [];
 
 
@@ -75,33 +78,29 @@ class Game{
         if (player.x / gridX > 14){
             player.x = 0;
             //console.log(player.x % gridX)
-        } else if(player.x <= - gridX){
+        } else if(player.x == - gridX){
             player.x = canvas.width - player.sprite.width;
         }
         
         //when player is off-screen in y
         if (player.y / gridY > 16){
             player.y = 0;
-        } else if(player.y <= - gridY){
+        } else if(player.y == - gridY){
             player.y = canvas.height - player.sprite.height;
         }
+
+        /* if(player.tail.x == player.x && player.tail.y == player.y){
+            player.die()
+        } */
 
         //when player eats a candy
         if(player.x == candy.x && player.y == candy.y){
             player.addTail();
             candy.randomizePosition()
-            //candy.randomizeSprite();
+            //candy.random = Math.floor(Math.random() * candy.sprite["length"])
+            candy.randomizeSprite();
             //console.log(player.tail)
         } 
-
-        
-
-
-        //when player hits the tail
-
-        /* if (player.x == tail.x && player.y == tail.y){
-            console.log("DIE!")
-        } */
     }
 
     render(){
@@ -127,24 +126,19 @@ class Game{
         player.draw();
         player.step();
         player.update();
-        console.log(candy.randomSprite)
+        keypressed = false
+        //console.log(player.tail)
+        //console.log(player.x / gridX +  " " + player.y /gridY)
+        //console.log(candy.random)
+        //console.log(Tail.x)
+        //console.log(keypressed)
+        //console.log(keysDown)
+        //console.log(candy.randomSprite)
 
         /* if(!player.alive){
         ctx.font = "20px Arial";
         ctx.fillStyle = "red"
         ctx.fillText("Game Over", gridX * 4, gridY * 7);
         } */
-
-        //write the score
-        
-
-
-        //candy.newCandy()
-        //console.log(candy.newCandy())
-        //console.log("x: " + tail.x + " y: " + tail.y)
-        //console.log("X: " + player.x + " Y: " + player.y)
-        //console.log(tail)
-
-        //console.log("X: " + player.x/gridX + " Y: " + player.y/gridY)
     }
 }

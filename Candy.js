@@ -1,11 +1,12 @@
 class Candy{
     constructor(){
-        /* this.x = x;
-        this.y = y; */
         this.randomizePosition();
+        this.sprite = [
+            sprites.candy,
+            sprites.candyGreen,
+            sprites.candyCorn
+        ]
         this.randomizeSprite();
-        this.randomSprite = Math.floor(Math.random() * 3)
-        this.sprite = sprites.candy;
     }
 
     randomizePosition(){
@@ -13,24 +14,15 @@ class Candy{
         this.y = Math.floor(Math.random() * 17) * gridY;
     }
 
+    /**
+     * gives random a random number in candy sprite
+     */
     randomizeSprite(){
-        
-        /* if(this.randomSprite = 0){
-            this.sprite = sprites.candy;
-        }else if (this.randomSprite = 1){
-            this.sprite = sprites.candyGreen;
-        }else if (this.randomSprite = 2){
-            this.sprite = sprites.candyCorn;
-        } */
+        this.random = Math.floor(Math.random() * this.sprite["length"])
     }
 
-    /* newCandy(){
-        var candy = new Candy(this.x, this.y)
-        this.candy.push(candy)
-    }  */
-
     draw(){
-        Renderer.img(this.sprite, this.x, this.y);
+        Renderer.img(this.sprite[this.random], this.x, this.y);
         
     }
 }

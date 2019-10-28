@@ -11,12 +11,6 @@ class Player{
 
     update(){
         for(let i in this.tail){
-            
-            //console.log(this.tail[i])
-            
-            /* nextX = this.tail[i].x;
-            nextY = this.tail[i].y; */
-
             // when player doesn't have any points
             if(i == 0 && this.direction == "up"){
                 this.tail[i].setPosition(this.x, this.y + gridY);
@@ -30,7 +24,11 @@ class Player{
             } else if(i == 0 && this.direction == "right"){
                 this.tail[i].setPosition(this.x - gridX, this.y);
                 
-            }  
+            }  /* else if(i == 0 && this.direction == "none"){
+                //this.tail.push(tail)
+                this.tail[i].setPosition(this.tail[i].x, this.tail[i].y);
+                
+            }   */
             /* if(i == 0){
                 this.tail[i].setPosition(this.x, this.y);
             } */
@@ -38,16 +36,18 @@ class Player{
             //when player has 1 or more points
             else{
                 let lastTail = this.tail[i-1];
-
+                //let lastY = this.y[i-1];
                 //console.log(this.tail[i])
                 this.tail[i].setPosition(lastTail.lastX, lastTail.lastY);
+                //console.log(lastX)
+                //console.log(lastY)
             } 
             
             //when tail is off-screen in x
             if (this.tail[i].x / gridX > 14){
                 this.tail[i].x = 0;
                 //console.log(this.tail[i].x % gridX);
-            } else if(this.tail[i].x <= - gridX){
+            } else if(this.tail[i].x == - gridX){
                 this.tail[i].x = canvas.width - player.sprite.width;
             }
 
@@ -55,18 +55,23 @@ class Player{
             if (this.tail[i].y / gridY > 16){
                 this.tail[i].y = 0;
                 //console.log(this.tail[i].y % gridY)
-            } else if(this.tail[i].y <= - gridY){
+            } else if(this.tail[i].y == - gridY){
                 this.tail[i].y = canvas.height - player.sprite.height;
             }
 
             //if player touches the tail
-            if (this.tail[i].x == this.x && this.tail[i].y == this.y){
+            /* while(player.x == -16){
+                if (this.tail[i].x == canvas.width - gridX){
+                    console.log("diueee")
+                }
+            } */
+             if (this.tail[i].x == this.x && this.tail[i].y == this.y){
                 //console.log("die")
                 //this.die = true;
                 this.die();
                 
-            }
-
+            } 
+        
             //if candy spawns in a tail
             if (this.tail[i].x == candy.x && this.tail[i].y == candy.y){
                 candy.randomizePosition();
@@ -85,6 +90,8 @@ class Player{
         if(this.direction == "down") tail.y = this.y /* - this.sprite.height; */
         //left
         if(this.direction == "left") tail.x = this.x /* + this.sprite.width;  */
+         
+        //if(this.direction == "none") tail.x = this.x
         this.tail.push(tail)
         
         
@@ -100,15 +107,27 @@ class Player{
     // if player is in a direction it moves to specified direction
     step(){
         //up
-        if(this.direction == "up") this.move(0, -1)
+        if(this.direction == "up"){
+            this.sprite = sprites.playerUp;
+            this.move(0, -1)
+        } 
         //right
-        if(this.direction == "right") this.move(1, 0)
+        if(this.direction == "right"){
+            this.sprite = sprites.playerRight;
+            this.move(1, 0)
+        }
         //down
-        if(this.direction == "down") this.move(0, 1)
+        if(this.direction == "down"){
+            this.sprite = sprites.player;
+            this.move(0, 1)
+        } 
         //left
-        if(this.direction == "left") this.move(-1, 0)
+        if(this.direction == "left"){
+            this.sprite = sprites.playerLeft;
+            this.move(-1, 0)
+        } 
 
-        if(this.direction == "none") this.move(0, 0)
+        //if(this.direction == "none") this.move(0, 0)
     }
 
     //when player dies
@@ -117,10 +136,10 @@ class Player{
         console.log("dieeeee")
         this.direction = "none"
         console.log(this.direction)
-        //Renderer.img(this.spriteDead, this.x, this.y);
-        player.sprite = sprites.playerDead;
-        //main.document.removeEventListener("keydown", event)
         
+        player.sprite = sprites.playerDead;
+        
+        //this.tail.reduce(tail)
         game.stop();
     }
     draw(){
