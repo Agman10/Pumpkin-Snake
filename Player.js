@@ -24,11 +24,14 @@ class Player{
             } else if(i == 0 && this.direction == "right"){
                 this.tail[i].setPosition(this.x - gridX, this.y);
                 
-            }  /* else if(i == 0 && this.direction == "none"){
+            }   else if(i == 0 && this.direction == "none"){
                 //this.tail.push(tail)
-                this.tail[i].setPosition(this.tail[i].x, this.tail[i].y);
                 
-            }   */
+                this.tail[i].setPosition(this.tail[i].x, this.tail[i].y);
+                //this.tail[i].reduce
+                
+                
+            }   
             /* if(i == 0){
                 this.tail[i].setPosition(this.x, this.y);
             } */
@@ -133,12 +136,12 @@ class Player{
     //when player dies
     die(){
         this.alive = false;
-        console.log("dieeeee")
+        //console.log("dieeeee")
         this.direction = "none"
-        console.log(this.direction)
+        //console.log(this.direction)
         
         player.sprite = sprites.playerDead;
-        
+        //this.Tail.setPosition(this.x, this.y);
         //this.tail.reduce(tail)
         game.stop();
     }

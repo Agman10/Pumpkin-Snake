@@ -65,42 +65,50 @@ class Game{
             //keypressed = true
         }
 
-        /* if (keysDown[32]){
-            player.direction = "none";
-            keypressed = true
-        } */
 
         //keypressed = false
         keysDown = [];
 
-
+        
+        player.step();
         //when player is off screen in x
-        if (player.x / gridX > 14){
+        
+
+        //places the player x to 0 if it is 15
+        player.x %= gridX*15
+        
+        /* if (player.x / gridX > 14){
             player.x = 0;
-            //console.log(player.x % gridX)
-        } else if(player.x == - gridX){
+            
+        }*/
+        if(player.x == - gridX){
             player.x = canvas.width - player.sprite.width;
         }
         
         //when player is off-screen in y
-        if (player.y / gridY > 16){
+
+        player.y %= gridY*17
+        
+        /* if (player.y / gridY > 16){
             player.y = 0;
-        } else if(player.y == - gridY){
+            
+        }  */
+        if(player.y == - gridY){
             player.y = canvas.height - player.sprite.height;
         }
 
-        /* if(player.tail.x == player.x && player.tail.y == player.y){
-            player.die()
-        } */
-
+        
+    
         //when player eats a candy
         if(player.x == candy.x && player.y == candy.y){
             player.addTail();
             candy.randomizePosition()
-            //candy.random = Math.floor(Math.random() * candy.sprite["length"])
             candy.randomizeSprite();
-            //console.log(player.tail)
-        } 
+        }
+        
+        player.update();
+        keypressed = false
+        
     }
 
     render(){
@@ -115,30 +123,12 @@ class Game{
         
         for(var tail of player.tail){
             tail.draw()
-            //console.log(player.tail["length"]-1)
-            //tail.setPosition();
-            //tail.step() 
         }
         ctx.font = "10px Arial";
         ctx.fillStyle = "white"
         ctx.fillText("score: " + points, 4, 10);
         candy.draw();
         player.draw();
-        player.step();
-        player.update();
-        keypressed = false
-        //console.log(player.tail)
-        //console.log(player.x / gridX +  " " + player.y /gridY)
-        //console.log(candy.random)
-        //console.log(Tail.x)
-        //console.log(keypressed)
-        //console.log(keysDown)
-        //console.log(candy.randomSprite)
-
-        /* if(!player.alive){
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "red"
-        ctx.fillText("Game Over", gridX * 4, gridY * 7);
-        } */
+        
     }
 }
