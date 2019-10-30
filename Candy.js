@@ -19,6 +19,7 @@ class Candy{
             sprites.lollipopBlack,
             sprites.lollipopBrown,
             sprites.candyCorn,
+            sprites.geleHallon
             
             
         ]

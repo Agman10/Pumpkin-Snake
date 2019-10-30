@@ -35,6 +35,7 @@ var sprites = {
     lollipopBlack: FileLoader.importSprite('sprites/lollipopBlack.png'),
     lollipopBrown: FileLoader.importSprite('sprites/lollipopBrown.png'),
     candyCorn: FileLoader.importSprite('sprites/candyCorn.png'),
+    geleHallon: FileLoader.importSprite('sprites/geleHallon.png'),
 
 
 }
