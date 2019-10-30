@@ -3,7 +3,7 @@ class Game{
         //this.running = false;
     }
     start(){
-        let fps = 6;
+        let fps = 10;
         setInterval(() => this.loop(), 1000/fps);
     }
 
