@@ -8,7 +8,7 @@ class Game{
     }
 
     stop(){
-        console.log("you are dead");
+        //console.log("you are dead");
         
     }
 

@@ -11,6 +11,9 @@ class Candy{
             sprites.mCandyYellow,
             sprites.mCandyBlue,
             sprites.mCandyBrown,
+            sprites.carWhite,
+            sprites.carPink,
+            sprites.carGreen,
             sprites.lollipop,
             sprites.candyCorn
         ]

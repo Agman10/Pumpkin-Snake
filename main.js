@@ -33,11 +33,11 @@ document.addEventListener("keydown", event => {
 })
 window.onload = () => {
     canvas.width = player.sprite.width * 15;
-    console.log(canvas.width);
+    //console.log(canvas.width);
     canvas.height = player.sprite.height * 17;
-    console.log(canvas.height);
+    /* console.log(canvas.height);
     console.log(canvas.width /15);
-    console.log(canvas.height / 17);
+    console.log(canvas.height / 17); */
     gridX = player.sprite.width
     gridY = player.sprite.height
     candy = new Candy();

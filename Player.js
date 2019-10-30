@@ -62,7 +62,7 @@ class Player{
             //if candy spawns in a tail
             if (this.tail[i].x == candy.x && this.tail[i].y == candy.y){
                 candy.randomizePosition();
-                console.log("new postition")
+                //console.log("new postition")
             }
         }
     }

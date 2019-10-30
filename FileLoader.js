@@ -5,7 +5,7 @@ FileLoader = new class FileLoader{
     importSprite(path){
         var sprite = new Image();
         sprite.src = path;
-        console.log(sprite);
+        //console.log(sprite);
         return sprite;
     }
 
@@ -27,7 +27,11 @@ var sprites = {
     mCandyYellow: FileLoader.importSprite('sprites/mCandyYellow.png'),
     mCandyBlue: FileLoader.importSprite('sprites/mCandyBlue.png'),
     mCandyBrown: FileLoader.importSprite('sprites/mCandyBrown.png'),
+    carWhite: FileLoader.importSprite('sprites/carWhite.png'),
+    carPink: FileLoader.importSprite('sprites/carPink.png'),
+    carGreen: FileLoader.importSprite('sprites/carGreen.png'),
     lollipop: FileLoader.importSprite('sprites/lollipop.png'),
     candyCorn: FileLoader.importSprite('sprites/candyCorn.png')
+
 
 }
