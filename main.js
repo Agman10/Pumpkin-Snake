@@ -1,5 +1,3 @@
-/* var canvas = document.createElement('canvas');
-var ctx = canvas.getContext('2d'); */
 canvas.setAttribute("id", "canvas");
 
 var gridX
@@ -9,7 +7,6 @@ var gridY
  * load the Game class
  */
 var game = new Game();
-
 /**
  * loads candy
  */
@@ -27,15 +24,7 @@ var keysDown = [];
 var keypressed = false;
 
 document.addEventListener("keydown", event => {
-    if (!player.alive || keypressed) return
-    //console.log(event.keyCode)
-    //console.log("event code " + event.code)
-
-
-    //when space is pressed it doesn't repeat. iit gets the name of the key
-    /* if(!keysDown[event.keyCode]){
-        document.dispatchEvent(new Event(event.code))
-    } */
+    if (keypressed) return
 
     keysDown[event.keyCode] = true;
     keypressed = true

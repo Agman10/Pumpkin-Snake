@@ -1,33 +1,21 @@
 class Game{
     constructor(){
-        this.running = false;
+        //this.running = false;
     }
     start(){
-        //player.addTail();
-        //candy.newCandy();
-        //console.log("tails: " + player.tail["length" - 1])
-        //candy.newCandy();
         let fps = 6;
-        //if(player.dead == false){
         setInterval(() => this.loop(), 1000/fps);
-        //}
-        
-        //var candy = new Candy(candy.x, candy.y)
     }
 
     stop(){
-        
-        //let fps = 6;
-        //setInterval(() => {
-        //clearInterval(this.render())
         console.log("you are dead");
-        //setInterval(() => {
-            //ctx.fillStyle = 'black';
-            //ctx.fillRect(0, 0, 250, 250);
-            //Renderer.clear();
-        //}, 1000/fps);
-        //Renderer.clear();
-        //}, 1000/fps);
+        
+    }
+
+    reset(){
+        this.stop()
+        candy = new Candy();
+        player = new Player(32, 28);
     }
 
     loop(){
@@ -38,31 +26,30 @@ class Game{
 
     logic(){
         //up key pressed when you aren't moving down and
-        if (player.direction != "down" && player.direction != "up" /* && !keypressed */ && keysDown[38]) {
+        if (player.direction != "down" && player.direction != "up" && keysDown[38] && player.alive) {
             player.direction = "up";
-            //console.log(player.direction);
-            //keypressed = true
             
         }
         //down key pressed
-        if (player.direction != "up" && player.direction != "down" /* && !keypressed */ && keysDown[40]) {
+        if (player.direction != "up" && player.direction != "down" && keysDown[40] && player.alive) {
             player.direction = "down";
-            //console.log(player.direction);
-            //keypressed = true
             
         }
         //left key pressed
-        if (player.direction != "right" && player.direction != "left" /* && !keypressed */ && keysDown[37]) {
+        if (player.direction != "right" && player.direction != "left" && keysDown[37] && player.alive) {
             player.direction = "left";
-            //console.log(player.direction);
-            //keypressed = true
+
         }
         //right key pressed
-        if (player.direction != "left" && player.direction != "right" /* && !keypressed */ && keysDown[39]){
+        if (player.direction != "left" && player.direction != "right" && keysDown[39] && player.alive){
             player.direction = "right";
-            //console.log(player.direction)
 
-            //keypressed = true
+        }
+        
+        //when player is dead and presses space game resets
+        if(!player.alive && keysDown[32]){
+            game.reset();
+            
         }
 
 
@@ -75,24 +62,17 @@ class Game{
         
 
         //places the player x to 0 if it is 15
-        player.x %= gridX*15
+        player.x %= gridX*15;
         
-        /* if (player.x / gridX > 14){
-            player.x = 0;
-            
-        }*/
+
         if(player.x == - gridX){
             player.x = canvas.width - player.sprite.width;
         }
         
         //when player is off-screen in y
 
-        player.y %= gridY*17
+        player.y %= gridY*17;
         
-        /* if (player.y / gridY > 16){
-            player.y = 0;
-            
-        }  */
         if(player.y == - gridY){
             player.y = canvas.height - player.sprite.height;
         }
@@ -107,7 +87,7 @@ class Game{
         }
         
         player.update();
-        keypressed = false
+        keypressed = false;
         
     }
 
@@ -117,18 +97,19 @@ class Game{
          * so to make points accurate to the ammount candy eaten
          * remove one in lengt
         */ 
-        let points = player.tail["length"]//-1
+        let points = player.tail["length"];
 
         Renderer.clear();
         
         for(var tail of player.tail){
-            tail.draw()
+            tail.draw();
         }
         ctx.font = "10px Arial";
-        ctx.fillStyle = "white"
+        ctx.fillStyle = "white";
         ctx.fillText("score: " + points, 4, 10);
         candy.draw();
         player.draw();
+        
         
     }
 }

@@ -24,32 +24,22 @@ class Player{
             } else if(i == 0 && this.direction == "right"){
                 this.tail[i].setPosition(this.x - gridX, this.y);
                 
-            }   else if(i == 0 && this.direction == "none"){
-                //this.tail.push(tail)
-                
+            } else if(i == 0 && this.alive == false){
                 this.tail[i].setPosition(this.tail[i].x, this.tail[i].y);
-                //this.tail[i].reduce
                 
-                
-            }   
-            /* if(i == 0){
-                this.tail[i].setPosition(this.x, this.y);
-            } */
-
+            } 
             //when player has 1 or more points
             else{
                 let lastTail = this.tail[i-1];
-                //let lastY = this.y[i-1];
-                //console.log(this.tail[i])
                 this.tail[i].setPosition(lastTail.lastX, lastTail.lastY);
-                //console.log(lastX)
-                //console.log(lastY)
             } 
+
+            
             
             //when tail is off-screen in x
             if (this.tail[i].x / gridX > 14){
                 this.tail[i].x = 0;
-                //console.log(this.tail[i].x % gridX);
+                
             } else if(this.tail[i].x == - gridX){
                 this.tail[i].x = canvas.width - player.sprite.width;
             }
@@ -61,17 +51,11 @@ class Player{
             } else if(this.tail[i].y == - gridY){
                 this.tail[i].y = canvas.height - player.sprite.height;
             }
-
-            //if player touches the tail
-            /* while(player.x == -16){
-                if (this.tail[i].x == canvas.width - gridX){
-                    console.log("diueee")
-                }
-            } */
              if (this.tail[i].x == this.x && this.tail[i].y == this.y){
                 //console.log("die")
                 //this.die = true;
                 this.die();
+                
                 
             } 
         
@@ -86,13 +70,13 @@ class Player{
     addTail(){
         var tail = new Tail(this.x, this.y)
         //up
-        if(this.direction == "up") tail.y = this.y /* + this.sprite.height; */
+        if(this.direction == "up") tail.y = this.y;
         //right
-        if(this.direction == "right") tail.x = this.x /* - this.sprite.width;  */
+        if(this.direction == "right") tail.x = this.x;
         //down
-        if(this.direction == "down") tail.y = this.y /* - this.sprite.height; */
+        if(this.direction == "down") tail.y = this.y;
         //left
-        if(this.direction == "left") tail.x = this.x /* + this.sprite.width;  */
+        if(this.direction == "left") tail.x = this.x;
          
         //if(this.direction == "none") tail.x = this.x
         this.tail.push(tail)
@@ -104,7 +88,6 @@ class Player{
     move(x, y){
         this.x += x * this.sprite.width;
         this.y += y * this.sprite.height;
-        //this.posY += 2;
     }
 
     // if player is in a direction it moves to specified direction
@@ -136,13 +119,9 @@ class Player{
     //when player dies
     die(){
         this.alive = false;
-        //console.log("dieeeee")
         this.direction = "none"
-        //console.log(this.direction)
-        
         player.sprite = sprites.playerDead;
-        //this.Tail.setPosition(this.x, this.y);
-        //this.tail.reduce(tail)
+        
         game.stop();
     }
     draw(){
@@ -151,6 +130,10 @@ class Player{
             ctx.font = "20px Arial";
             ctx.fillStyle = "red"
             ctx.fillText("Game Over", gridX * 4, gridY * 7);
+
+            ctx.font = "10px Arial";
+            ctx.fillStyle = "red"
+            ctx.fillText("press space to try again", 65, gridY * 8);
         }
         
     }

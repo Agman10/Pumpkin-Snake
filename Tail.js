@@ -19,11 +19,6 @@ class Tail{
 
     draw(){
         Renderer.img(this.sprite, this.x, this.y);
-        //Renderer.img(this.sprite, player.x, player.y);
-        //Renderer.rect(this.x + 4, this.y + 3, 6, 6, "lightblue");
         
     }
 }
-
-/* tail = new Tail(player.x - 16, player.y);
-tail2 = new Tail(tail.x - 16, tail.y); */

@@ -26,5 +26,3 @@ class Candy{
         
     }
 }
-//candy = new Candy(candy.x, candy.y)
-/* var candy = new Candy(128, 112) */
