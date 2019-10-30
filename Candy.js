@@ -2,8 +2,15 @@ class Candy{
     constructor(){
         this.randomizePosition();
         this.sprite = [
-            sprites.candy,
-            sprites.candyGreen,
+            sprites.caramelRed,
+            sprites.caramelGreen,
+            sprites.caramelBlue,
+            sprites.sCandyRed,
+            sprites.sCandyGreen,
+            sprites.sCandyOrange,
+            sprites.sCandyYellow,
+            sprites.sCandyPurple,
+            sprites.lollipop,
             sprites.candyCorn
         ]
         this.randomizeSprite();
