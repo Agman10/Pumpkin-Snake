@@ -5,6 +5,7 @@ class Candy{
             sprites.caramelRed,
             sprites.caramelGreen,
             sprites.caramelBlue,
+            sprites.caramelPurple,
             sprites.mCandyRed,
             sprites.mCandyGreen,
             sprites.mCandyOrange,
@@ -14,8 +15,12 @@ class Candy{
             sprites.carWhite,
             sprites.carPink,
             sprites.carGreen,
-            sprites.lollipop,
-            sprites.candyCorn
+            sprites.lollipopPink,
+            sprites.lollipopBlack,
+            sprites.lollipopBrown,
+            sprites.candyCorn,
+            
+            
         ]
         this.randomizeSprite();
     }
@@ -29,6 +34,7 @@ class Candy{
      * gives random a random number in candy sprite
      */
     randomizeSprite(){
+        //console.log(this.sprite)
         this.random = Math.floor(Math.random() * this.sprite["length"])
     }
 

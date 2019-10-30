@@ -21,6 +21,7 @@ var sprites = {
     caramelRed: FileLoader.importSprite('sprites/caramelRed.png'),
     caramelGreen: FileLoader.importSprite('sprites/caramelGreen.png'),
     caramelBlue: FileLoader.importSprite('sprites/caramelBlue.png'),
+    caramelPurple: FileLoader.importSprite('sprites/caramelPurple.png'),
     mCandyRed: FileLoader.importSprite('sprites/mCandyRed.png'),
     mCandyGreen: FileLoader.importSprite('sprites/mCandyGreen.png'),
     mCandyOrange: FileLoader.importSprite('sprites/mCandyOrange.png'),
@@ -30,8 +31,10 @@ var sprites = {
     carWhite: FileLoader.importSprite('sprites/carWhite.png'),
     carPink: FileLoader.importSprite('sprites/carPink.png'),
     carGreen: FileLoader.importSprite('sprites/carGreen.png'),
-    lollipop: FileLoader.importSprite('sprites/lollipop.png'),
-    candyCorn: FileLoader.importSprite('sprites/candyCorn.png')
+    lollipopPink: FileLoader.importSprite('sprites/lollipopPink.png'),
+    lollipopBlack: FileLoader.importSprite('sprites/lollipopBlack.png'),
+    lollipopBrown: FileLoader.importSprite('sprites/lollipopBrown.png'),
+    candyCorn: FileLoader.importSprite('sprites/candyCorn.png'),
 
 
 }
