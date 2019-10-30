@@ -5,11 +5,12 @@ class Candy{
             sprites.caramelRed,
             sprites.caramelGreen,
             sprites.caramelBlue,
-            sprites.sCandyRed,
-            sprites.sCandyGreen,
-            sprites.sCandyOrange,
-            sprites.sCandyYellow,
-            sprites.sCandyPurple,
+            sprites.mCandyRed,
+            sprites.mCandyGreen,
+            sprites.mCandyOrange,
+            sprites.mCandyYellow,
+            sprites.mCandyBlue,
+            sprites.mCandyBrown,
             sprites.lollipop,
             sprites.candyCorn
         ]
