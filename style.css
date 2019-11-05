@@ -36,7 +36,17 @@ body{
     image-rendering: pixelated;
     
 }
+@media only screen and (max-width: 500px) {
+    #canvas {
+        width: 240px;
+        height: 238px;
+    }
+    button{
+        font-size: 32px;
+    }
+    .updown{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+  }
 
-/* button{
-    position: absolute;
-} */
