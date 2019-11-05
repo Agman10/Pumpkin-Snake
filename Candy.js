@@ -35,7 +35,7 @@ class Candy{
      * gives random a random number in candy sprite
      */
     randomizeSprite(){
-        //console.log(this.sprite)
+        console.log(this.sprite)
         this.random = Math.floor(Math.random() * this.sprite["length"])
     }
 

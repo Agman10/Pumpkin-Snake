@@ -36,6 +36,16 @@ body{
     image-rendering: pixelated;
     
 }
+
+.updown{
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 8px;
+}
+#space{
+    margin-top: 10px;
+}
+
 @media only screen and (max-width: 500px) {
     #canvas {
         width: 240px;
@@ -45,8 +55,67 @@ body{
         font-size: 32px;
     }
     .updown{
-        padding-left: 16px;
-        padding-right: 16px;
+        margin-top: 20px;
     }
+    #left{
+        margin-right: 20px;
+    }
+    #right{
+        margin-left: 20px;
+    }
+    #space{
+        margin-top: 30px;
+    }
+
   }
 
+@media only screen and (max-height: 420px) {
+    #canvas {
+        width: 240px;
+        height: 238px;
+    }
+    button{
+        font-size: 16px;
+    }
+    #left{
+        margin-right: 10px;
+    }
+    #right{
+        margin-left: 10px;
+    }
+    
+  }
+
+@media only screen and (max-height: 330px) {
+    body{
+        overflow: hidden;
+    }
+    #canvas {
+        width: 240px;
+        height: 238px;
+    }
+    button{
+        font-size: 16px;
+    }
+    .updown{
+        position: relative;
+        left: 50px;
+        margin-top: 5px;
+    }
+    #left{
+        position: relative;
+        left: 50px;
+        margin-right: 10px;
+    }
+    #right{
+        position: relative;
+        left: 50px;
+        margin-left: 10px;
+        
+    }
+    #space{
+        position: relative;
+        bottom: 33px;
+        right: 90px;
+    }
+  }
