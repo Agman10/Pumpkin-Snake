@@ -1,16 +1,17 @@
-body{
+body {
     background-color: rgb(30, 30, 30);
     text-align: center;
 }
-#canvas{
+
+#canvas {
     padding: 0;
     margin: auto;
     display: block;
-    border:rgb(230, 130, 16) 3px solid;
-    background-color:black;
+    border: rgb(230, 130, 16) 3px solid;
+    background-color: black;
     /* font-family: 'Press Start 2P';
     font-size: 10px; */
-    
+
     /* for 160x160 resolution (10 grids) */
     /* width: 320px;
     height: 320px; */
@@ -23,7 +24,7 @@ body{
     height: 408px; */
     /* width: 450px;
     height: 442px; */
-    
+
     width: 480px;
     height: 476px;
 
@@ -31,19 +32,29 @@ body{
     /* width: 640px;
     height: 640px; */
 
-    image-rendering: -moz-crisp-edges;    
-    image-rendering: -webkit-crisp-edges; 
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
-    
+
 }
 
-.updown{
+/* .updown {
     padding-left: 16px;
     padding-right: 16px;
     margin-top: 8px;
-}
-#space{
+} */
+
+#space {
     margin-top: 10px;
+}
+
+button {
+    color: orange;
+    background-color: black;
+    border-left-color: orange;
+    border-top-color: orange;
+    border-right-color: orange;
+    border-bottom-color: orange;
 }
 
 @media only screen and (max-width: 500px) {
@@ -51,71 +62,88 @@ body{
         width: 240px;
         height: 238px;
     }
-    button{
+
+    button {
         font-size: 20px;
+
     }
-    .updown{
+
+    /*
+    .updown {
         margin-top: 20px;
     }
-    #left{
+
+    #left {
         margin-right: 20px;
     }
-    #right{
+
+    #right {
         margin-left: 20px;
     }
-    #space{
+    */
+
+    #space {
         margin-top: 30px;
     }
 
-  }
+}
 
 @media only screen and (max-height: 420px) {
     #canvas {
         width: 240px;
         height: 238px;
     }
-    button{
+
+    button {
         font-size: 16px;
     }
-    #left{
+
+    /*     #left {
         margin-right: 10px;
     }
-    #right{
+
+    #right {
         margin-left: 10px;
     }
-    
-  }
+ */
+}
 
 @media only screen and (max-height: 330px) {
-    body{
+    body {
         overflow: hidden;
     }
+
     #canvas {
         width: 240px;
         height: 238px;
     }
-    button{
+
+    button {
         font-size: 16px;
     }
-    .updown{
+
+    /* .updown {
         position: relative;
         left: 50px;
         margin-top: 5px;
     }
-    #left{
+
+    #left {
         position: relative;
         left: 50px;
         margin-right: 10px;
     }
-    #right{
+
+    #right {
         position: relative;
         left: 50px;
         margin-left: 10px;
-        
-    }
-    #space{
+
+    } */
+
+    #space {
         position: relative;
-        bottom: 33px;
-        right: 90px;
+        bottom: 73px;
+        right: 200px;
     }
-  }
+}
