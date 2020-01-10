@@ -1,8 +1,8 @@
-FileLoader = new class FileLoader{
-    constructor(){
+FileLoader = new class FileLoader {
+    constructor() {
     }
 
-    importSprite(path){
+    importSprite(path) {
         var sprite = new Image();
         sprite.src = path;
         //console.log(sprite);
@@ -18,6 +18,12 @@ var sprites = {
     playerUp: FileLoader.importSprite('sprites/pumpkinFaceUp.png'),
     playerDead: FileLoader.importSprite('sprites/pumpkinSad.png'),
     tail: FileLoader.importSprite('sprites/pumpkin.png'),
+    playerSkull: FileLoader.importSprite('sprites/pumpkinSkelleton.png'),
+    playerLeftSkull: FileLoader.importSprite('sprites/pumpkinSkelletonLeft.png'),
+    playerRightSkull: FileLoader.importSprite('sprites/pumpkinSkelletonRight.png'),
+    playerUpSkull: FileLoader.importSprite('sprites/pumpkinSkelletonUp.png'),
+    playerDeadSkull: FileLoader.importSprite('sprites/pumpkinSkelletonSad.png'),
+    tailSkull: FileLoader.importSprite('sprites/pumpkinSkelletonTail.png'),
     caramelRed: FileLoader.importSprite('sprites/candy/caramelRed.png'),
     caramelGreen: FileLoader.importSprite('sprites/candy/caramelGreen.png'),
     caramelBlue: FileLoader.importSprite('sprites/candy/caramelBlue.png'),

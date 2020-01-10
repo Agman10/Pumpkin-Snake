@@ -82,6 +82,14 @@ function spaceButton() {
     }
 }
 
+function changeSkin() {
+    if (player.skin == 0) {
+        player.skin = 1;
+    } else if (player.skin == 1) {
+        player.skin = 0;
+    }
+}
+
 
 window.onload = () => {
     canvas.width = player.sprite.width * 15;

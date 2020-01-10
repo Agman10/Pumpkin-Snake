@@ -4,9 +4,14 @@ class Player {
         this.y = y;
         this.tail = new Array();
         this.sprite = sprites.player;
+        this.spriteSkin = [
+            sprites.player,
+            sprites.playerSkull
+        ];
         //this.spriteDead = sprites.playerDead;
         this.direction = "right";
         this.alive = true;
+        this.skin = 0;
     }
 
     update() {
@@ -94,22 +99,27 @@ class Player {
     step() {
         //up
         if (this.direction == "up") {
-            this.sprite = sprites.playerUp;
+            if (this.skin == 0) this.sprite = sprites.playerUp;
+            if (this.skin == 1) this.sprite = sprites.playerUpSkull;
             this.move(0, -1)
         }
         //right
         if (this.direction == "right") {
-            this.sprite = sprites.playerRight;
+            if (this.skin == 0) this.sprite = sprites.playerRight;
+            if (this.skin == 1) this.sprite = sprites.playerRightSkull;
             this.move(1, 0)
         }
         //down
         if (this.direction == "down") {
-            this.sprite = sprites.player;
+            if (this.skin == 0) this.sprite = sprites.player;
+            if (this.skin == 1) this.sprite = sprites.playerSkull;
             this.move(0, 1)
         }
         //left
         if (this.direction == "left") {
-            this.sprite = sprites.playerLeft;
+            if (this.skin == 0) this.sprite = sprites.playerLeft;
+            if (this.skin == 1) this.sprite = sprites.playerLeftSkull;
+
             this.move(-1, 0)
         }
 
@@ -120,7 +130,8 @@ class Player {
     die() {
         this.alive = false;
         this.direction = "none"
-        player.sprite = sprites.playerDead;
+        if (this.skin == 0) this.sprite = sprites.playerDead;
+        if (this.skin == 1) this.sprite = sprites.playerDeadSkull;
 
         game.stop();
     }
